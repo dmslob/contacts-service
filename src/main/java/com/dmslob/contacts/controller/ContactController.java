@@ -19,10 +19,6 @@ public class ContactController {
 
     private ConversionService conversionService;
 
-    public ContactController() {
-
-    }
-
     @Autowired
     public ContactController(@Qualifier("contactServiceImpl") ContactService contactService, ConversionService conversionService) {
         this.contactService = contactService;

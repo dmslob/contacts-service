@@ -20,7 +20,7 @@ public class ContactServiceImpl implements ContactService {
 
     Logger LOGGER = LoggerFactory.getLogger(ContactServiceImpl.class);
 
-    final transient Object lock = new Object();
+    final Object lock = new Object();
 
     private ContactRepository contactRepository;
 
@@ -29,9 +29,6 @@ public class ContactServiceImpl implements ContactService {
     private ConcurrentHashMap<String, List<Contact>> filterToContacts = new ConcurrentHashMap<>();
 
     List<Contact> contacts = new ArrayList<>();
-
-    public ContactServiceImpl() {
-    }
 
     @Autowired
     public ContactServiceImpl(ContactRepository contactRepository, ContactFilter contactFilter) {

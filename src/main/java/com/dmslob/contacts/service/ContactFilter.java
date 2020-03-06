@@ -16,8 +16,7 @@ public class ContactFilter {
     public List<Contact> filter(List<Contact> contacts, String nameFilter) {
         Pattern pattern = Pattern.compile(nameFilter);
 
-        List<Contact> filteredContacts = contacts
-                .stream()
+        List<Contact> filteredContacts = contacts.stream()
                 .parallel()
                 .filter(contact -> !(pattern.matcher(contact.getName()).matches()))
                 .collect(Collectors.toList());
