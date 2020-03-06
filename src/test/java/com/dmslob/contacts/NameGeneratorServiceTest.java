@@ -24,7 +24,7 @@ public class NameGeneratorServiceTest {
     }
 
     @Test
-    public void testRandomName() {
+    public void testNextName() {
         String contactName = nameGeneratorService.generate();
         assertNotNull(contactName);
 
