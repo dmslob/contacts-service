@@ -28,7 +28,7 @@ public class ContactServiceImpl implements ContactService {
 
     private ConcurrentHashMap<String, List<Contact>> filterToContacts = new ConcurrentHashMap<>();
 
-    List<Contact> contacts = new ArrayList<>();
+    private List<Contact> contacts = new ArrayList<>();
 
     @Autowired
     public ContactServiceImpl(ContactRepository contactRepository, ContactFilter contactFilter) {
@@ -38,8 +38,7 @@ public class ContactServiceImpl implements ContactService {
 
     public List<Contact> getByPattern(String nameFilter) {
         findContacts();
-        filterToContacts.computeIfAbsent(nameFilter, filter -> contactFilter.filter(contacts, filter));
-        return filterToContacts.get(nameFilter);
+        return filterToContacts.computeIfAbsent(nameFilter, filter -> contactFilter.filter(contacts, filter));
     }
 
     /**
