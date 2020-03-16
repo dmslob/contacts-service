@@ -3,7 +3,6 @@ package com.dmslob.contacts.controller;
 import com.dmslob.contacts.model.ContactDto;
 import com.dmslob.contacts.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +14,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/hello/contacts")
 public class ContactController {
 
+    @Autowired
     private ContactService contactService;
 
+    @Autowired
     private ConversionService conversionService;
 
-    @Autowired
-    public ContactController(@Qualifier("contactServiceImpl") ContactService contactService, ConversionService conversionService) {
+    public ContactController(ContactService contactService, ConversionService conversionService) {
         this.contactService = contactService;
         this.conversionService = conversionService;
     }

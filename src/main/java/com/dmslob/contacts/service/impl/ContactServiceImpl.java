@@ -22,19 +22,15 @@ public class ContactServiceImpl implements ContactService {
 
     final Object lock = new Object();
 
+    @Autowired
     private ContactRepository contactRepository;
 
+    @Autowired
     private ContactFilter contactFilter;
 
     private ConcurrentHashMap<String, List<Contact>> filterToContacts = new ConcurrentHashMap<>();
 
     private List<Contact> contacts = new ArrayList<>();
-
-    @Autowired
-    public ContactServiceImpl(ContactRepository contactRepository, ContactFilter contactFilter) {
-        this.contactRepository = contactRepository;
-        this.contactFilter = contactFilter;
-    }
 
     public List<Contact> getByPattern(String nameFilter) {
         findContacts();
